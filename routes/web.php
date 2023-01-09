@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
-->middleware('auth');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
+// ->middleware('auth');
 
 //?how service contianer work ?
 // Route::get('/', function () {
@@ -56,4 +57,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //     return  new \App\Example($collaborator, $foo);
 // });
 //?go AppServiceProvider
-Route::get('/', [HomeController::class, 'home']);
+// Route::get('/', [HomeController::class, 'home']);
+
+
+//? how send email
+
+Route::get('/contact', [ContactController::class, 'show']);
+Route::post('/contact', [ContactController::class, 'store']);
