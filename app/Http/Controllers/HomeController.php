@@ -27,8 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return View::make('home');
-        return File::get(public_path('index.php'));
+        return View::make('home');
+        // return File::get(public_path('index.php'));
     }
 
     public function home()

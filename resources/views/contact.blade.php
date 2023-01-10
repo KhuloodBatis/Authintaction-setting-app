@@ -146,39 +146,39 @@
     <div class="main-block">
       <h1>Registration</h1>
       <form action="/contact"
-            method="POST">
-            @csrf
-        <hr>
-        <hr>
-        <label
-        id="icon"
-        for="email"><i
-        class="fas fa-envelope"></i>
-    </label>
-        <input
-        type="text"
-        name="email"
-        id="name"
-        placeholder="Email" required/>
-        @error('email')
+                    method="POST">
+                    @csrf
+                <hr>
+                <hr>
+                <label
+                id="icon"
+                for="email"><i
+                class="fas fa-envelope"></i>
+            </label>
+                <input
+                type="text"
+                name="email"
+                id="name"
+                placeholder="Email" required/>
+                @error('email')
 
-        <div class="error-message" >{{ $message }}</div>
+                <div class="error-message" >{{ $message }}</div>
 
-        @enderror
-        <hr>
-        <hr>
-        <div class="btn-block">
-          <p>By clicking Register, you agree on our <a href="https://www.w3docs.com/privacy-policy">Privacy Policy for W3Docs</a>.</p>
-          <button type="submit" href="/">Submit</button>
-        </div>
+                @enderror
+                <hr>
+                <hr>
+                <div class="btn-block">
+                <p>By clicking Register, you agree on our <a href="https://www.w3docs.com/privacy-policy">Privacy Policy for W3Docs</a>.</p>
+                <button type="submit" href="/">Submit</button>
+                </div>
 
-        @if (session('message'))
+                @if (session('message'))
 
-        <div class='email-message'>
-            {{session('message')}}
-        </div>
+                <div class='email-message'>
+                    {{session('message')}}
+                </div>
 
-        @endif
+                @endif
       </form>
     </div>
   </body>

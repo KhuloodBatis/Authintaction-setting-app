@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PymentsController;
+use App\Http\Controllers\UserNotificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Auth::routes();
+Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
-// ->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->name('home')
+    ->middleware('auth');
+
+// Route::
 
 //?how service contianer work ?
 // Route::get('/', function () {
@@ -64,3 +68,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/contact', [ContactController::class, 'show']);
 Route::post('/contact', [ContactController::class, 'store']);
+
+//?pyments
+
+Route::get('pyments/create', [PymentsController::class, 'create'])->middleware('auth');
+Route::post('pyments', [PymentsController::class, 'store'])->middleware('auth');
+Route::get('notifications', [UserNotificationController::class, 'show'])->middleware('auth');
