@@ -31,6 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'foo' => 'value'
-    
+    'foo' => 'value',
+
+    'vonage' => [
+        'vonage_sms_from' => env('VONAGE_SMS_FROM')
+    ]
+
 ];
