@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Conversation;
+use App\Models\Reply;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +17,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // $this->call([
+        //     \App\Models\User::factory(5)->create(),
+        //     \App\Models\Conversation::factory(5)->create(),
+        //     \App\Models\Reply::factory(5)->create()
+        // ]);
+
+
+        // \App\Models\Reply::factory(5)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $this->call([
+            ConversationSeeder::class,
+            UserSeeder::class,
+            ReplySeeder::class,
+        ]);
     }
 }

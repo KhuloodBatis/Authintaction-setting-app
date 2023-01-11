@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ConversationBestReplyController;
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PymentsController;
 use App\Http\Controllers\UserNotificationController;
@@ -21,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')
     ->middleware('auth');
@@ -74,3 +76,10 @@ Route::post('/contact', [ContactController::class, 'store']);
 Route::get('pyments/create', [PymentsController::class, 'create'])->middleware('auth');
 Route::post('pyments', [PymentsController::class, 'store'])->middleware('auth');
 Route::get('notifications', [UserNotificationController::class, 'show'])->middleware('auth');
+
+Route::get('conversations', [ConversationController::class, 'index']);
+Route::get('conversations/{conversation}', [ConversationController::class, 'show']);
+
+Route::post('best-replies/{reply}', [ConversationBestReplyController::class, 'store']);
+
+Auth::routes();
