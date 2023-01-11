@@ -7,11 +7,18 @@
 @foreach ($conversation->replies as $reply )
 
 <div class='container'>
-<p class="m-0"><strong>{{$reply->user->name}} said..</strong></p>
+
+    <header>
+        <p class="m-0"><strong>{{$reply->user->name}} said..</strong></p>
+            @if ( $reply->isBest())
+            <span style="color:#20c997">Best reply!!</span>
+            @endif
+
+    </header>
 
 {{$reply->body}}
 
-@can('update-conversation',$conversation)
+@can('update',$conversation)
  <form action="/best-replies/{{$reply->id}}" method="POST">
     @csrf
               <button type="submit" href="/" style="

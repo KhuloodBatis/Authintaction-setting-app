@@ -33,4 +33,9 @@ class Reply extends Model
     {
         return $this->belongsTo(Conversation::class);
     }
+
+    public function isBest()
+    {
+        return $this->id == $this->conversation->best_reply_id;
+    }
 }
