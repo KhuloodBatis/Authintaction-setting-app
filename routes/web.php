@@ -8,6 +8,8 @@ use App\Http\Controllers\PymentsController;
 use App\Http\Controllers\UserNotificationController;
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+//
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
@@ -77,9 +79,19 @@ Route::get('pyments/create', [PymentsController::class, 'create'])->middleware('
 Route::post('pyments', [PymentsController::class, 'store'])->middleware('auth');
 Route::get('notifications', [UserNotificationController::class, 'show'])->middleware('auth');
 
-Route::get('conversations', [ConversationController::class, 'index']);
+Route::get('conversations', [ConversationController::class, 'index'])->name('conversations.index');
 Route::get('conversations/{conversation}', [ConversationController::class, 'show']);
 
 Route::post('best-replies/{reply}', [ConversationBestReplyController::class, 'store']);
 
 Auth::routes();
+
+//?reports
+auth()->loginUsingId(11);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/reports', function () {
+    return 'the secret reports';
+})->middleware('can:view_reports');

@@ -31,8 +31,18 @@ class AuthServiceProvider extends ServiceProvider
 
         //
 
-        Gate::define('update-conversation', function (User $user, Conversation $conversation) {
-            return $conversation->user->is($user);
+        // Gate::define('update-conversation', function (User $user, Conversation $conversation) {
+        //     return $conversation->user->is($user);
+        // });
+
+        // Gate::before(function (User $user) {
+        //     if ($user->id == 11) { //admin
+        //         return true;
+        //     }
+        // });
+
+        Gate::before(function ($user, $ability) {
+            return $user->abilities()->contains($ability);
         });
     }
 }
